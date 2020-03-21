@@ -10,15 +10,17 @@ export class GameComponent implements OnInit {
   constructor() {}
 
   GRID_SIZE = 24
-  GUTTER = 1.5
+  GUTTER = 1
 
   blocks: Block[]
 
   ngOnInit(): void {
     this.blocks = [
       { col: 0, row: 6, color: '#b20000', size: 2 },
-      { col: 8, row: 2, color: '#b20000', size: 4 },
-      { col: 2, row: 0, color: '#b20000', size: 2 }
+      { col: 2, row: 6, color: '#b20000', size: 2 },
+      { col: 2, row: 8, color: '#b20000', size: 2 },
+      { col: 0, row: 8, color: '#b20000', size: 2 },
+      { col: 0, row: 2, color: '#b20000', size: 4 }
     ]
   }
 }

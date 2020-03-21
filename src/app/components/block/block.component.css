@@ -1,3 +1,8 @@
 .block {
   position: absolute;
+  transition: 0.25s;
+}
+
+.block:hover {
+  transform: scale(1.05);
 }
