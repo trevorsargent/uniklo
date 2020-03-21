@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "uniklo-game": {
+      "hosting": {
+        "uniklo": [
+          "uniklo-game"
+        ]
+      }
+    }
+  }
+}
