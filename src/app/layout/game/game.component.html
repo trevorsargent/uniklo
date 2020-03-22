@@ -1,7 +1,11 @@
-<app-block
+<div class="game" (resized)="onResize($event)">
+  <app-block
     *ngFor="let block of blocks"
     [block]="block"
     [gridSize]="GRID_SIZE"
-    [gutter]="GUTTER"
->
-</app-block>
+    [gutterPercent]="GUTTER"
+    [gameSize]="GAME_SIZE"
+    (blockMove)="onBlockMove($event)"
+  >
+  </app-block>
+</div>

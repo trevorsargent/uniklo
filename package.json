@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.7",
+    "@angular/cdk": "^9.1.3",
     "@angular/common": "~9.0.7",
     "@angular/compiler": "~9.0.7",
     "@angular/core": "~9.0.7",
@@ -20,6 +21,8 @@
     "@angular/platform-browser": "~9.0.7",
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
+    "@service-work/size-observer": "^1.0.0",
+    "angular-resize-event": "^1.2.1",
     "firebase": "^7.8.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

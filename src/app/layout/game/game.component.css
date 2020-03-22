@@ -1,7 +1,8 @@
-:host {
+.game {
   display: block;
   width: 93vh;
   height: 93vh;
   margin: 0 auto;
   position: relative;
+  border: solid 1px grey;
 }
