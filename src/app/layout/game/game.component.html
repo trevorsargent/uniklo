@@ -2,10 +2,10 @@
   <app-block
     *ngFor="let block of blocks"
     [block]="block"
-    [gridSize]="GRID_SIZE"
-    [gutterPercent]="GUTTER"
-    [gameSize]="GAME_SIZE"
+    [cellSize]="cellSize"
+    [gutterSize]="gutterSize"
     (blockMove)="onBlockMove($event)"
   >
   </app-block>
 </div>
+<!-- (click)="addBlock($event)"  -->

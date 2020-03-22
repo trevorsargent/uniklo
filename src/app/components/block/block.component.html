@@ -5,15 +5,15 @@
   (cdkDragEnded)="onBlockDrop($event)"
   (cdkDragMoved)="onBlockMove($event)"
   [style.color]="block.color"
-  [style.top]="top + '%'"
-  [style.left]="left + '%'"
-  [style.width]="size + '%'"
-  [style.height]="size + '%'"
+  [style.top]="top + 'px'"
+  [style.left]="left + 'px'"
+  [style.width]="size + 'px'"
+  [style.height]="size + 'px'"
 ></div>
 <div
   class="block-shadow"
-  [style.top]="shadowTop + '%'"
-  [style.left]="shadowLeft + '%'"
-  [style.width]="size + '%'"
-  [style.height]="size + '%'"
+  [style.top]="shadowTop + 'px'"
+  [style.left]="shadowLeft + 'px'"
+  [style.width]="size + 'px'"
+  [style.height]="size + 'px'"
 ></div>

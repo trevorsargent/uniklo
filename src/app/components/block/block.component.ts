@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core'
+import { gridCoordFromDistance } from 'src/domain/rowColUtils'
 
 @Component({
   selector: 'app-block',
@@ -9,84 +10,71 @@ export class BlockComponent implements OnInit {
   @Input()
   block: Block
 
-  @Input()
-  gridSize: number
-
-  @Input()
-  gutterPercent: number
-
-  @Input()
-  gameSize: number
-
   @Output()
   blockMove = new EventEmitter<Block>()
 
-  shadowCol = -1
-  shadowRow = -1
+  @Input()
+  cellSize: number
 
-  get cellPercent() {
-    return (100 - (this.gridSize + 1) * this.gutterPercent) / this.gridSize
-  }
-
-  get cellSize() {
-    return this.gameSize * this.cellPercent * 0.01
-  }
-
-  get gutterSize() {
-    return this.gameSize * this.gutterPercent * 0.01
-  }
+  @Input()
+  gutterSize: number
 
   get left() {
     return (
-      this.block.col * this.cellPercent +
-      (this.block.col + 1) * this.gutterPercent
+      this.block.col * this.cellSize + (this.block.col + 1) * this.gutterSize
     )
   }
 
   get top() {
     return (
-      this.block.row * this.cellPercent +
-      (this.block.row + 1) * this.gutterPercent
+      this.block.row * this.cellSize + (this.block.row + 1) * this.gutterSize
     )
   }
 
   get shadowTop() {
     return (
-      this.shadowRow * this.cellPercent +
-      (this.shadowRow + 1) * this.gutterPercent
+      this.block.shadowRow * this.cellSize +
+      (this.block.shadowRow + 1) * this.gutterSize
     )
   }
 
   get shadowLeft() {
     return (
-      this.shadowCol * this.cellPercent +
-      (this.shadowCol + 1) * this.gutterPercent
+      this.block.shadowCol * this.cellSize +
+      (this.block.shadowCol + 1) * this.gutterSize
     )
   }
 
   get size() {
     return (
-      this.block.size * this.cellPercent +
-      (this.block.size - 1) * this.gutterPercent
+      this.block.size * this.cellSize + (this.block.size - 1) * this.gutterSize
     )
   }
 
   constructor() {}
 
   ngOnInit(): void {
-    this.shadowCol = this.block.col
-    this.shadowRow = this.block.row
+    this.block.shadowCol = this.block.col
+    this.block.shadowRow = this.block.row
+  }
+
+  updateShadowPosition() {
+    this.block.shadowCol = this.block.col
+    this.block.shadowRow = this.block.row
   }
 
   onBlockDrop($event) {
-    console.log('drop', $event)
     if (!$event.distance) {
       return
     }
     const { x, y } = $event.distance
 
-    const rowDelta = Math.round(y / (this.cellSize + this.gutterSize))
-    const colDelta = Math.round(x / (this.cellSize + this.gutterSize))
+    const { row: rowDelta, col: colDelta } = gridCoordFromDistance(
+      x,
+      y,
+      this.cellSize,
+      this.gutterSize
+    )
 
     const newRow = this.block.row + rowDelta
     const newCol = this.block.col + colDelta
@@ -107,17 +95,23 @@ export class BlockComponent implements OnInit {
     }
     const { x, y } = $event.distance
 
-    const rowDelta = Math.round(y / (this.cellSize + this.gutterSize))
-    const colDelta = Math.round(x / (this.cellSize + this.gutterSize))
+    const { row: rowDelta, col: colDelta } = gridCoordFromDistance(
+      x,
+      y,
+      this.cellSize,
+      this.gutterSize
+    )
 
-    this.shadowCol = this.block.col + colDelta
-    this.shadowRow = this.block.row + rowDelta
+    this.block.shadowCol = this.block.col + colDelta
+    this.block.shadowRow = this.block.row + rowDelta
   }
 }
 
 export interface Block {
   row: number
   col: number
+  shadowRow: number
+  shadowCol: number
   size: number
   color: string
   id: string
