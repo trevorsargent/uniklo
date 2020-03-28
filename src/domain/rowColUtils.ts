@@ -15,10 +15,10 @@ export function gridCoordFromDistance(
   }
 }
 
-export function blockByGridCoord(blocks: Block[], row, col): Block | null {
+export function findBlockByOrigin(blocks: Block[], row, col): Block | null {
   return (
     blocks.find(b => {
-      return b.row - (b.size - 1) === row && b.col - (b.size - 1) === col
+      return b.row === row && b.col === col
     }) || null
   )
 }

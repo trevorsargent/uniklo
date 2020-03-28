@@ -6,7 +6,10 @@ import { Observable } from 'rxjs'
 import 'firebase/firestore'
 import { AngularFirestore } from '@angular/fire/firestore'
 import * as uuid from 'uuid'
-import { gridCoordFromDistance, blockByGridCoord } from 'src/domain/rowColUtils'
+import {
+  gridCoordFromDistance,
+  findBlockByOrigin
+} from 'src/domain/rowColUtils'
 
 @Component({
   selector: 'app-game',
@@ -76,7 +79,7 @@ export class GameComponent implements OnInit, OnDestroy {
             col: block.col + d.col * size * r.col,
             row: block.row + d.row * size * r.row
           }
-          const b = blockByGridCoord(this.blocks, coord.row, coord.col)
+          const b = findBlockByOrigin(this.blocks, coord.row, coord.col)
           if (b) {
             return b.size === size // whether block is a match
           }
@@ -91,7 +94,6 @@ export class GameComponent implements OnInit, OnDestroy {
     })
 
     if (!foundShape || !foundReflection) {
-      console.log(block)
       return { toUpdate: [block] }
     }
 
@@ -100,7 +102,7 @@ export class GameComponent implements OnInit, OnDestroy {
         row: block.row + offset.row * foundReflection.row * size,
         col: block.col + offset.col * foundReflection.col * size
       }
-      const b = blockByGridCoord(this.blocks, targetBlock.row, targetBlock.col)
+      const b = findBlockByOrigin(this.blocks, targetBlock.row, targetBlock.col)
       return b
     })
 
