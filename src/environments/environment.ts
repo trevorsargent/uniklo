@@ -1,9 +1,6 @@
-import { firebase } from '../configs/firebase.config'
+import defaults from './environment.default'
 
-export const environment = {
-  production: false,
-  firebase
-}
+export const environment = defaults
 
 /*
  * For easier debugging in development mode, you can import the following file
