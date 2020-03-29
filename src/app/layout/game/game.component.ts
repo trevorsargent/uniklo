@@ -172,28 +172,14 @@ export class GameComponent implements OnInit, OnDestroy {
     batch.commit()
   }
 
-  addBlock($event) {
-    const x = $event.offsetX
-    const y = $event.offsetY
-
-    const { row, col } = gridCoordFromDistance(
-      x,
-      y,
-      this.cellSize,
-      this.gutterSize
-    )
-
-    if (!(row === 0 && col === 0)) {
-      return
-    }
-
+  addBlock($event: MouseEvent) {
     const id = uuid.v4()
     this.firestore
       .collection('blocks')
       .doc(id)
       .set({
-        row,
-        col,
+        col: 0,
+        row: 0,
         size: 1,
         id,
         color: '#b20000'

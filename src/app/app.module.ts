@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core'
 import { AppComponent } from './app.component'
 import { BlockComponent } from './components/block/block.component'
 import { GameComponent } from './layout/game/game.component'
-import { HeaderComponent } from './layout/header/header.component'
 
 import { DragDropModule } from '@angular/cdk/drag-drop'
 import { AngularResizedEventModule } from 'angular-resize-event'
@@ -14,7 +13,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'
 import { environment } from 'src/environments/environment'
 
 @NgModule({
-  declarations: [AppComponent, BlockComponent, GameComponent, HeaderComponent],
+  declarations: [AppComponent, BlockComponent, GameComponent],
   imports: [
     BrowserModule,
     DragDropModule,

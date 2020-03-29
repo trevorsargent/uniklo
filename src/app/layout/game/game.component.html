@@ -1,4 +1,7 @@
-<div class="game" (click)="addBlock($event)" (resized)="onResize($event)">
+<button (click)="addBlock($event)" class="add-block">
+  +
+</button>
+<div class="game" (resized)="onResize($event)">
   <app-block
     *ngFor="let block of blocks"
     [block]="block"
@@ -8,3 +11,6 @@
   >
   </app-block>
 </div>
+<button (click)="addBlock($event)" class="add-block">
+  +
+</button>
