@@ -1,27 +1,10 @@
 {
-  "hosting": [
-    {
-      "target": "uniklo",
-      "public": "dist/uniklo",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ]
-    }
-  ],
   "database": {
-    "rules": "database.rules.json"
+    "rules": ".firebase/database.rules.json"
   },
   "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
+    "rules": ".firebase/firestore.rules",
+    "indexes": ".firebase/firestore.indexes.json"
   },
   "functions": {
     "predeploy": [

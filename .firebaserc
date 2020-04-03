@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "uniklo-game": {
-      "hosting": {
-        "uniklo": [
-          "uniklo-game"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "uniklo-game"
   }
