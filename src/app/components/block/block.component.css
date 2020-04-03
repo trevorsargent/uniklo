@@ -1,34 +1,26 @@
 .block {
   z-index: 500;
   position: absolute;
-  transition: 0.25s;
+  box-sizing: border-box;
 }
 
-.cdk-drag-dragging {
-  opacity: 0;
-}
-
-.block::before {
-  z-index: 499;
+.drag {
+  box-sizing: border-box;
   position: absolute;
-  background-color: currentColor;
-  height: 100%;
-  width: 100%;
-  transition: 0.25s;
-  content: '';
+  border: solid 2px;
+  z-index: 999;
 }
 
-.block.cdk-drag-dragging::before {
-  opacity: 0.5 !important;
+.display {
+  background: currentColor;
+  position: absolute;
+  transition: top 0.25s, left 0.25s;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
 
-.block:hover::before {
+.display:hover {
   transform: scale(1.1);
-}
-
-.block-shadow {
-  z-index: 100;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.1);
-  transition: 0.25s;
 }

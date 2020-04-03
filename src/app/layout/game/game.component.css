@@ -10,6 +10,7 @@
   display: block;
   width: 100vh;
   height: 100vh;
+  border: 1px red solid;
 }
 
 .add-block {

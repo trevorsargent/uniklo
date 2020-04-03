@@ -1,4 +1,4 @@
-import { Block } from 'src/app/components/block/block.component'
+import { Block } from 'src/app/layout/game/game.component'
 
 export function gridCoordFromDistance(
   x,
@@ -21,4 +21,8 @@ export function findBlockByOrigin(blocks: Block[], row, col): Block | null {
       return b.row === row && b.col === col
     }) || null
   )
+}
+
+export function clamp(num, min, max) {
+  return Math.max(Math.min(num, max), min)
 }

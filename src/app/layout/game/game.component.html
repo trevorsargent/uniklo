@@ -4,10 +4,14 @@
 <div class="game" (resized)="onResize($event)">
   <app-block
     *ngFor="let block of blocks"
-    [block]="block"
-    [cellSize]="cellSize"
-    [gutterSize]="gutterSize"
-    (blockMove)="onBlockMove($event)"
+    [id]="block.id"
+    [left]="block.left"
+    [top]="block.top"
+    [size]="block.size"
+    [color]="block.color"
+    [isDragging]="block.isDragging"
+    (blockDrag)="onBlockDrag($event)"
+    (blockDrop)="onBlockDrop($event)"
   >
   </app-block>
 </div>

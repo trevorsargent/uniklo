@@ -1,19 +1,21 @@
 <div
-  class="block"
-  cdkDrag
-  cdkDragBoundary=".game"
-  (cdkDragEnded)="onBlockDrop($event)"
-  (cdkDragMoved)="onBlockMove($event)"
-  [style.color]="block.color"
+  class="block display"
   [style.top]="top + 'px'"
   [style.left]="left + 'px'"
   [style.width]="size + 'px'"
   [style.height]="size + 'px'"
+  [style.background-color]="isDragging ? 'green' : color"
 ></div>
 <div
-  class="block-shadow"
-  [style.top]="shadowTop + 'px'"
-  [style.left]="shadowLeft + 'px'"
-  [style.width]="size + 'px'"
+  class="drag"
+  cdkDrag
+  cdkDragBoundary=".game"
+  *ngIf="!isDragging || userIsDragging"
+  [style.top]="dragOrigin.top + 'px'"
+  [style.left]="dragOrigin.left + 'px'"
   [style.height]="size + 'px'"
+  [style.width]="size + 'px'"
+  (cdkDragEnded)="onBlockDrop($event)"
+  (cdkDragMoved)="onBlockMove($event)"
+  [style.border-color]="color"
 ></div>
